@@ -14,6 +14,8 @@ export function copy(cop) {
   return { ...cop};
 }
 
-export function reverseMerge() {}
+export function reverseMerge(element1, element2) {
+  return [...element2, ...element1]
+}
 
 export function filterAttribs() {}
