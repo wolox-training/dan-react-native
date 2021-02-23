@@ -7,7 +7,12 @@ export function min(value) {
   return value;
 }
 
-export function copy() {}
+export function copy(cop) {
+  if (isArray(cop)){
+    return [...cop];
+  }
+  return { ...cop};
+}
 
 export function reverseMerge() {}
 
