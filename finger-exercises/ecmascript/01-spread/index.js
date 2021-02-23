@@ -1,7 +1,7 @@
 import isArray from './utils';
 
-export function min( value) {
-  if (isArray(value)){
+export function min(value) {
+  if (value && isArray(value)){
     return Math.min(...value);
   }
   return value;
