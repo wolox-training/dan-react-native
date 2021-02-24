@@ -18,4 +18,7 @@ export function reverseMerge(element1, element2) {
   return [...element2, ...element1]
 }
 
-export function filterAttribs() {}
+export function filterAttribs(list) {
+  const { a, b, ...rest} = list;
+  return rest;
+}
