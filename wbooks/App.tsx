@@ -1,8 +1,8 @@
-if (__DEV__) {
-  import('@config/reactotronConfig').then(() => {
-    console.log('Reactotron Configured');
-  });
-}
+// if (__DEV__) {
+//   import('@config/reactotronConfig').then(() => {
+//     console.log('Reactotron Configured');
+//   });
+// }
 
 import React from 'react';
 

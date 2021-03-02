@@ -20,9 +20,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
-  console.tron.log('Test Reactotron - Wolox Accenture 2021');
+  // console.tron.log('Test Reactotron - Wolox Accenture 2021');
 
-  console.tron.log('Test Reactotron - WoAccenture 2022');
+  // console.tron.log('Test Reactotron - WoAccenture 2022');
 
   return (
     <>
