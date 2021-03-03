@@ -6,7 +6,7 @@ export const BOOKS_MOCK = [
     genre: 'Short story',
     publisher: 'Butterworth-Heinemann',
     year: '1968',
-    imageUrl: null
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51Zsio+pONL._SX359_BO1,204,203,200_.jpg'
   },
   {
     id: 1,
