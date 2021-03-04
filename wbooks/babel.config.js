@@ -10,6 +10,7 @@ module.exports = {
         alias: {
           '@app': './src/app',
           '@constants': './src/constants',
+          '@components': './src/app/components',
           '@assets': './src/app/assets',
           '@hooks': './src/app/hooks',
           '@screens': './src/app/screens',

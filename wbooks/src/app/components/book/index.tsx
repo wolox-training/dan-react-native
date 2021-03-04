@@ -3,20 +3,22 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-interface Props {
+const imageDefault = 'https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png';
+
+export interface Props {
   title: string;
   author: string;
-  image: string;
+  imageUrl: string | null;
 }
 
-function Book({ title, author, image }: Props) {
+function Book({ title, author, imageUrl }: Props) {
   const handlePress = () => {
     // next implementation
   };
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.containerBook}>
-      <Image style={styles.image} resizeMode="center" source={{ uri: image }} />
+      <Image style={styles.image} resizeMode="center" source={{ uri: imageUrl ? imageUrl : imageDefault }} />
       <View style={styles.containerInfo}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.author}>{author}</Text>
