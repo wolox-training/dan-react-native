@@ -10,21 +10,10 @@
  */
 
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Book from '@app/components/book';
-
-import styles from './styles';
+import BookList from '@screens/bookList';
 
 const App = () => {
-  const author = 'Emmie Thiel';
-  const title = 'Ring of Bright Water: The revenge of the dark fire ring';
-  const imageUrl = 'https://images-na.ssl-images-amazon.com/images/I/51Zsio+pONL._SX359_BO1,204,203,200_.jpg';
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <Book title={title} author={author} image={imageUrl} />
-    </SafeAreaView>
-  );
+  return <BookList />;
 };
 
 export default App;

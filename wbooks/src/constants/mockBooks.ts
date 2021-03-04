@@ -1,4 +1,6 @@
-export const BOOKS_MOCK = [
+import { Book } from '@interfaces/bookInterface';
+
+export const BOOKS_MOCK: Book[] = [
   {
     id: 0,
     author: 'Emmie Thiel',
@@ -6,7 +8,7 @@ export const BOOKS_MOCK = [
     genre: 'Short story',
     publisher: 'Butterworth-Heinemann',
     year: '1968',
-    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51Zsio+pONL._SX359_BO1,204,203,200_.jpg'
+    imageUrl: null
   },
   {
     id: 1,
