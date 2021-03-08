@@ -28,17 +28,11 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     maxWidth: 150
   },
-  author: {
-    color: dustyGray,
-    fontSize: 16
-  },
-  year: {
+  subTitle: {
     color: dustyGray,
     fontSize: 16
   },
   genre: {
-    color: dustyGray,
-    fontSize: 16,
     textTransform: 'capitalize'
   }
 });

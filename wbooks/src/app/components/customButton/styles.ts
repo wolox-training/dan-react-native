@@ -4,8 +4,7 @@ import { cerulean, transparent, white } from '@constants/colors';
 export default StyleSheet.create({
   btnDefault: {
     borderRadius: 50,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    padding: 10,
     marginTop: 10
   },
   btnTextDefault: {
