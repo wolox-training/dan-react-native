@@ -5,7 +5,7 @@ import styles from './styles';
 
 const imageDefault = 'https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png';
 
-export interface Props {
+interface Props {
   title: string;
   author: string;
   imageUrl: string | null;
