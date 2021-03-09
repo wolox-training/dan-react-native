@@ -1,15 +1,15 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import { BOOKS_MOCK } from '@constants/mockBooks';
-import BookDetail from '@app/components/itemDetail';
+import { COMMENTS_MOCK } from '@constants/mockComments';
+import BookComment from '@app/components/bookComment';
 
 import styles from './styles';
 
 function BookHome() {
-  const { author, title, genre, year, imageUrl } = BOOKS_MOCK[3];
+  const { author, text, url } = COMMENTS_MOCK[0];
   return (
     <SafeAreaView style={styles.container}>
-      <BookDetail author={author} title={title} genre={genre} year={year} imageUrl={imageUrl} />
+      <BookComment author={author} text={text} url={url} />
     </SafeAreaView>
   );
 }
