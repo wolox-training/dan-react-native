@@ -1,16 +1,16 @@
 import styles from './styles';
 
-export enum BUTTONTHEME {
+export enum CustomButtonTheme {
   OUTLINE = 'Outline',
   GRADIENTS = 'Gradients'
 }
 
-export function getButtonStyle(type: BUTTONTHEME) {
+export function getButtonStyle(type: CustomButtonTheme) {
   switch (type) {
-    case BUTTONTHEME.OUTLINE: {
+    case CustomButtonTheme.OUTLINE: {
       return { styleText: styles.btnTextOutline, styleBackground: styles.btnOutline };
     }
-    case BUTTONTHEME.GRADIENTS: {
+    case CustomButtonTheme.GRADIENTS: {
       return { styleText: styles.btnTextGradients, styleBackground: styles.btnGradients };
     }
     default: {

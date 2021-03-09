@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
-import { BUTTONTHEME, getButtonStyle } from './utils';
+import { CustomButtonTheme, getButtonStyle } from './utils';
 
 interface Props {
   text: string;
-  stylesButton: BUTTONTHEME;
+  stylesButton: CustomButtonTheme;
 }
 
 function CustomButton({ text, stylesButton }: Props) {
