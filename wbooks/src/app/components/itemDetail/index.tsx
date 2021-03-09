@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import CustomButton from '@components/customButton';
 
-import { BUTTONTHEME } from '../customButton/utils';
+import { CustomButtonTheme } from '../customButton/utils';
 
 import styles from './styles';
 
@@ -28,8 +28,8 @@ function ItemDetail({ title, author, imageUrl, year, genre }: Props) {
           <Text style={[styles.subTitle, styles.genre]}>{genre}</Text>
         </View>
       </View>
-      <CustomButton text={'add to wishlist'} stylesButton={BUTTONTHEME.OUTLINE} />
-      <CustomButton text={'rent'} stylesButton={BUTTONTHEME.GRADIENTS} />
+      <CustomButton text={'add to wishlist'} stylesButton={CustomButtonTheme.OUTLINE} />
+      <CustomButton text={'rent'} stylesButton={CustomButtonTheme.GRADIENTS} />
     </View>
   );
 }
