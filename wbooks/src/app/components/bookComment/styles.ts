@@ -4,12 +4,9 @@ import { white, tundora, dustyGray } from '@constants/colors';
 export default StyleSheet.create({
   container: {
     backgroundColor: white,
-    borderRadius: 5,
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    width: '100%'
+    padding: 20
   },
   image: {
     borderRadius: 50,
@@ -18,9 +15,7 @@ export default StyleSheet.create({
   },
   containerInfo: {
     backgroundColor: white,
-    marginHorizontal: 10,
-    borderBottomColor: dustyGray,
-    borderBottomWidth: 1,
+    paddingHorizontal: 10,
     maxWidth: '85%'
   },
   author: {
@@ -30,7 +25,7 @@ export default StyleSheet.create({
   },
   text: {
     color: dustyGray,
-    maxWidth: '95%',
+    maxWidth: '100%',
     fontSize: 12
   }
 });

@@ -4,7 +4,6 @@ import { Text, View, Image } from 'react-native';
 import styles from './styles';
 
 const imageDefault = 'https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png';
-
 interface Props {
   text: string;
   author: string;

@@ -7,6 +7,7 @@ export default StyleSheet.create({
     backgroundColor: polar,
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 20
+    paddingHorizontal: 10,
+    paddingBottom: 30
   }
 });
