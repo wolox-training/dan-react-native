@@ -14,9 +14,11 @@ interface Props {
 }
 
 function BookCommentList({ commentList }: Props) {
-  const [quantityElement, setQuantityElement] = useState(MINELEMENT);
-  const filterComments = () => commentList.slice(0, quantityElement);
-  const [commentListFilter, setCommentListFilter] = useState(filterComments);
+  const filterMinComments = commentList.slice(0, MINELEMENT);
+  const filterMaxComments = commentList.slice(0, MAXELEMENT);
+
+  const [data, setData] = useState(filterMinComments);
+  const [open, setOpen] = useState(false);
 
   const keyExtractor = ({ id }: ICommentBook) => `${id}`;
 
@@ -28,19 +30,19 @@ function BookCommentList({ commentList }: Props) {
   const itemSeparator = () => <View style={styles.separator} />;
 
   const handleShowComment = () => {
-    setQuantityElement(quantityElement === MINELEMENT ? MAXELEMENT : MINELEMENT);
-    setCommentListFilter(filterComments);
+    setData(open ? filterMinComments : filterMaxComments);
+    setOpen(!open);
   };
 
   const listFooter = () => (
     <TouchableOpacity style={styles.containerFooter} onPress={handleShowComment}>
-      <Text style={styles.textFooter}>View All</Text>
+      <Text style={styles.textFooter}>{open ? 'View Less' : 'View All'}</Text>
     </TouchableOpacity>
   );
 
   return (
     <FlatList
-      data={commentListFilter}
+      data={data}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={itemSeparator}
