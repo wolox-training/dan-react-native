@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { white, tundora, dustyGray } from '@constants/colors';
 
+const SQUAREIMAGE = 50;
+
 export default StyleSheet.create({
   container: {
     backgroundColor: white,
@@ -10,8 +12,8 @@ export default StyleSheet.create({
   },
   image: {
     borderRadius: 50,
-    height: 50,
-    width: 50
+    height: SQUAREIMAGE,
+    width: SQUAREIMAGE
   },
   containerInfo: {
     backgroundColor: white,

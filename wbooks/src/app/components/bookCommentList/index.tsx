@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { FlatList, ListRenderItem, View, Text, TouchableOpacity } from 'react-native';
-import { CommentBook as ICommentBook } from '@interfaces/commentBookInterface';
+import { CommentBook, CommentBook as ICommentBook } from '@interfaces/commentBookInterface';
 
 import BookComment from '../bookComment';
 
 import styles from './styles';
 
 const MINELEMENT = 2;
-const MAXELEMENT = 10;
+const MAXELEMENT = 5;
 
-function BookCommentList({ commentList }: any) {
+interface Props {
+  commentList: CommentBook[];
+}
+
+function BookCommentList({ commentList }: Props) {
   const [quantityElement, setQuantityElement] = useState(MINELEMENT);
-  let commentListFilter: any[] = [];
-
-  const filterComments = () => {
-    return commentList.slice(0, quantityElement);
-  };
-
-  commentListFilter = filterComments();
+  const filterComments = () => commentList.slice(0, quantityElement);
+  const [commentListFilter, setCommentListFilter] = useState(filterComments);
 
   const keyExtractor = ({ id }: ICommentBook) => `${id}`;
 
@@ -30,7 +29,7 @@ function BookCommentList({ commentList }: any) {
 
   const handleShowComment = () => {
     setQuantityElement(quantityElement === MINELEMENT ? MAXELEMENT : MINELEMENT);
-    commentListFilter = filterComments();
+    setCommentListFilter(filterComments);
   };
 
   const listFooter = () => (
