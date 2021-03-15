@@ -27,7 +27,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName={Routes.Home}
+        initialRouteName={Routes.BookList}
         screenOptions={{
           headerTintColor: white,
           headerTitleStyle: {

@@ -4,6 +4,7 @@ import { BOOKS_MOCK } from '@constants/mockBooks';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
 import { Navigation } from '@interfaces/navigation';
+import Routes from '@constants/routes';
 
 import styles from './styles';
 
@@ -18,7 +19,7 @@ function BookList({ navigation }: Navigation) {
   const itemSeparator = () => <View style={styles.separator} />;
 
   const handleNavigateToHome = () => {
-    navigation.navigate('Home');
+    navigation.navigate(Routes.Home);
   };
 
   return (
