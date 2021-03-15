@@ -18,25 +18,25 @@ import BookHome from '@screens/bookHome';
 import { white } from '@constants/colors';
 import fondo from '@assets/bc_nav_bar.png';
 
+import styles from './styles';
+
 const AppStack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="Home"
+        initialRouteName="HomeList"
         screenOptions={{
           headerTintColor: white,
-          headerTitleAlign: 'center',
-          // headerTitleStyle: {
-          //   textTransform: 'uppercase'
-          // },
+          // headerTitleAlign: 'center', se comenta para tener comportamiento natvio iOS/Android
+          headerTitleStyle: {
+            textTransform: 'uppercase'
+          },
           headerBackground: () => (
             <Image
-              style={StyleSheet.absoluteFill}
+              style={[styles.headerImage, StyleSheet.absoluteFill]}
               source={fondo}
-              // width={450}
-              // height={60}
               resizeMode="stretch"
             />
           )
