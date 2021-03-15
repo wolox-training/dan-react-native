@@ -16,7 +16,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
 import { white } from '@constants/colors';
-import fondo from '@assets/bc_nav_bar.png';
+import bcNavBar from '@assets/bcNavBar.png';
+import Routes from '@constants/routes';
 
 import styles from './styles';
 
@@ -26,23 +27,22 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="HomeList"
+        initialRouteName={Routes.Home}
         screenOptions={{
           headerTintColor: white,
-          // headerTitleAlign: 'center', se comenta para tener comportamiento natvio iOS/Android
           headerTitleStyle: {
             textTransform: 'uppercase'
           },
           headerBackground: () => (
             <Image
               style={[styles.headerImage, StyleSheet.absoluteFill]}
-              source={fondo}
+              source={bcNavBar}
               resizeMode="stretch"
             />
           )
         }}>
-        <AppStack.Screen name="Home" component={BookHome} options={{ title: 'Inicio' }} />
-        <AppStack.Screen name="HomeList" component={BookList} options={{ title: 'Lista de Libros' }} />
+        <AppStack.Screen name={Routes.Home} component={BookHome} options={{ title: 'Inicio' }} />
+        <AppStack.Screen name={Routes.BookList} component={BookList} options={{ title: 'Lista de Libros' }} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

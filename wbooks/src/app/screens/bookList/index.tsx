@@ -3,10 +3,11 @@ import { FlatList, ListRenderItem, SafeAreaView, View, TouchableOpacity, Text } 
 import { BOOKS_MOCK } from '@constants/mockBooks';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
+import { Navigation } from '@interfaces/navigation';
 
 import styles from './styles';
 
-function BookList({ navigation }: any) {
+function BookList({ navigation }: Navigation) {
   const keyExtractor = ({ id }: IBook) => `${id}`;
 
   const renderItem: ListRenderItem<IBook> = ({ item }) => {
