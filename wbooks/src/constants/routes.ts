@@ -1,3 +1,6 @@
-export const bookListScreenRoute = 'BookList';
-export const bookHomeScreenRoute = 'BookHome';
-export const dummyScreenRoute = 'Dummy';
+enum Routes {
+  Home = 'Home',
+  BookList = 'BookList',
+  Dummy = 'Dummy'
+}
+export default Routes;

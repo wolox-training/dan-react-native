@@ -10,43 +10,35 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-// import { Image, StyleSheet, View, Text, Button } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { cerulean, dustyGray, white } from '@constants/colors';
+import bcNavBar from '@assets/bcNavBar.png';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
-import { cerulean, dustyGray } from '@constants/colors';
-// import headerImageBackground from '@assets/bc_nav_bar.png';
-import { bookHomeScreenRoute, bookListScreenRoute, dummyScreenRoute } from '@constants/routes';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import Dummy from '@screens/dummy';
+import Routes from '@constants/routes';
 
-import Dummy from './screens/dummy';
+import styles from './styles';
 
 const customHeaderNavigator: StackNavigationOptions = {
-  headerTintColor: cerulean,
-  headerTitleAlign: 'center',
+  headerTintColor: white,
   headerTitleStyle: {
     textTransform: 'uppercase'
-  }
-  // headerBackground: () => (
-  //   <Image
-  //     style={StyleSheet.absoluteFill}
-  //     source={headerImageBackground}
-  //     // width={450}
-  //     // height={60}
-  //     resizeMode="stretch"
-  //   />
-  // )
+  },
+  headerBackground: () => (
+    <Image style={[styles.headerImage, StyleSheet.absoluteFill]} source={bcNavBar} resizeMode="stretch" />
+  )
 };
 
 const BookListStack = createStackNavigator();
 const BookListStackScreen = () => {
   return (
-    <BookListStack.Navigator initialRouteName={bookListScreenRoute} screenOptions={customHeaderNavigator}>
-      <BookListStack.Screen name={bookHomeScreenRoute} component={BookHome} options={{ title: 'Home' }} />
-      <BookListStack.Screen name={bookListScreenRoute} component={BookList} options={{ title: 'Library' }} />
+    <BookListStack.Navigator initialRouteName={Routes.BookList} screenOptions={customHeaderNavigator}>
+      <BookListStack.Screen name={Routes.Home} component={BookHome} options={{ title: 'Home' }} />
+      <BookListStack.Screen name={Routes.BookList} component={BookList} options={{ title: 'Library' }} />
     </BookListStack.Navigator>
   );
 };
@@ -54,8 +46,8 @@ const BookListStackScreen = () => {
 const DummyStack = createStackNavigator();
 const DammyStackScreen = () => {
   return (
-    <DummyStack.Navigator initialRouteName={dummyScreenRoute} screenOptions={customHeaderNavigator}>
-      <DummyStack.Screen name={dummyScreenRoute} component={Dummy} options={{ title: 'Dummy' }} />
+    <DummyStack.Navigator initialRouteName={Routes.Dummy} screenOptions={customHeaderNavigator}>
+      <DummyStack.Screen name={Routes.Dummy} component={Dummy} options={{ title: 'Dummy' }} />
     </DummyStack.Navigator>
   );
 };
@@ -65,31 +57,35 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppTab.Navigator
-        // screenOptions={({ route }) => ({
-        //   tabBarIcon: ({ focused, color, size }) => {
-        //     let iconName = '';
-
-        //     if (route.name === bookListScreenRoute) {
-        //       iconName = focused ? 'address-card' : 'ios-information-circle-outline';
-        //     } else if (route.name === dummyScreenRoute) {
-        //       iconName = focused ? 'android' : 'ios-list';
-        //     }
-
-        //     // You can return any component that you like here!
-        //     return <Icon name={iconName} size={size} color={color} />;
-        //   }
-        // })}
         tabBarOptions={{
           activeTintColor: cerulean,
           inactiveTintColor: dustyGray
         }}>
         <AppTab.Screen
-          name={bookListScreenRoute}
+          name={Routes.BookList}
           component={BookListStackScreen}
           options={{ title: 'Library' }}
         />
-        <AppTab.Screen name={dummyScreenRoute} component={DammyStackScreen} />
+        <AppTab.Screen name={Routes.Dummy} component={DammyStackScreen} />
       </AppTab.Navigator>
+      {/* <AppStack.Navigator
+        initialRouteName={Routes.BookList}
+        screenOptions={{
+          headerTintColor: white,
+          headerTitleStyle: {
+            textTransform: 'uppercase'
+          },
+          headerBackground: () => (
+            <Image
+              style={[styles.headerImage, StyleSheet.absoluteFill]}
+              source={bcNavBar}
+              resizeMode="stretch"
+            />
+          )
+        }}>
+        <AppStack.Screen name={Routes.Home} component={BookHome} options={{ title: 'Inicio' }} />
+        <AppStack.Screen name={Routes.BookList} component={BookList} options={{ title: 'Lista de Libros' }} />
+      </AppStack.Navigator> */}
     </NavigationContainer>
   );
 };
