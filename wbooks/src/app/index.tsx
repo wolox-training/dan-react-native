@@ -10,16 +10,16 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import { Image, StyleSheet, View, Text, Button } from 'react-native';
+// import { Image, StyleSheet, View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
-import { white, cerulean, dustyGray } from '@constants/colors';
-import headerImageBackground from '@assets/bc_nav_bar.png';
+import { cerulean, dustyGray } from '@constants/colors';
+// import headerImageBackground from '@assets/bc_nav_bar.png';
 import { bookHomeScreenRoute, bookListScreenRoute, dummyScreenRoute } from '@constants/routes';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Dummy from './screens/dummy';
