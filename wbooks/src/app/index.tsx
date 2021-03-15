@@ -10,11 +10,16 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
+import { Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
-import { white, monza } from '@constants/colors';
+import { white } from '@constants/colors';
+import bcNavBar from '@assets/bcNavBar.png';
+import Routes from '@constants/routes';
+
+import styles from './styles';
 
 const AppStack = createStackNavigator();
 
@@ -22,15 +27,22 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="Home"
+        initialRouteName={Routes.BookList}
         screenOptions={{
-          headerStyle: {
-            backgroundColor: white
+          headerTintColor: white,
+          headerTitleStyle: {
+            textTransform: 'uppercase'
           },
-          headerTintColor: monza
+          headerBackground: () => (
+            <Image
+              style={[styles.headerImage, StyleSheet.absoluteFill]}
+              source={bcNavBar}
+              resizeMode="stretch"
+            />
+          )
         }}>
-        <AppStack.Screen name="Home" component={BookHome} options={{ title: 'Inicio' }} />
-        <AppStack.Screen name="HomeList" component={BookList} options={{ title: 'Lista de Libros' }} />
+        <AppStack.Screen name={Routes.Home} component={BookHome} options={{ title: 'Inicio' }} />
+        <AppStack.Screen name={Routes.BookList} component={BookList} options={{ title: 'Lista de Libros' }} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
