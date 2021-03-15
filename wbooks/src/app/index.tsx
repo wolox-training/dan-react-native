@@ -20,6 +20,7 @@ import bcNavBar from '@assets/bcNavBar.png';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
 import Dummy from '@screens/dummy';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
@@ -57,9 +58,23 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppTab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName = '';
+            if (route.name === Routes.BookList) {
+              iconName = 'library-outline';
+            } else if (route.name === Routes.Dummy) {
+              iconName = 'apps-outline';
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          }
+        })}
         tabBarOptions={{
           activeTintColor: cerulean,
-          inactiveTintColor: dustyGray
+          inactiveTintColor: dustyGray,
+          labelStyle: {
+            fontSize: 13
+          }
         }}>
         <AppTab.Screen
           name={Routes.BookList}
