@@ -20,9 +20,9 @@ import bcNavBar from '@assets/bcNavBar.png';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
 import Dummy from '@screens/dummy';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
+import CustomIconTabBar from './components/customIconTabBar';
 
 const customHeaderNavigator: StackNavigationOptions = {
   headerTintColor: white,
@@ -59,14 +59,8 @@ const App = () => {
     <NavigationContainer>
       <AppTab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            let iconName = '';
-            if (route.name === Routes.BookList) {
-              iconName = 'library-outline';
-            } else if (route.name === Routes.Dummy) {
-              iconName = 'apps-outline';
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
+          tabBarIcon: ({ focused }) => {
+            return <CustomIconTabBar route={route.name} focused={focused} />;
           }
         })}
         tabBarOptions={{
