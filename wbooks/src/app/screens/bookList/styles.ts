@@ -8,7 +8,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: polar,
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
+    paddingTop: 15
   },
   contentContainer: {
     paddingTop: MAX_SEPARATOR
