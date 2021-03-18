@@ -22,7 +22,7 @@ import BookHome from '@screens/bookHome';
 import Dummy from '@screens/dummy';
 
 import styles from './styles';
-import CustomIconTabBar from './components/customIconTabBar';
+import CustomIconTabBar from './components/customTabBarIcon';
 
 const customHeaderNavigator: StackNavigationOptions = {
   headerTintColor: white,
@@ -34,49 +34,50 @@ const customHeaderNavigator: StackNavigationOptions = {
   )
 };
 
-const BookListStack = createStackNavigator();
-const BookListStackScreen = () => {
+const StackNavigator = createStackNavigator();
+const TabNavigator = createBottomTabNavigator();
+
+const LibraryStackScreen = () => {
   return (
-    <BookListStack.Navigator initialRouteName={Routes.BookList} screenOptions={customHeaderNavigator}>
-      <BookListStack.Screen name={Routes.BookList} component={BookList} options={{ title: 'Library' }} />
-      <BookListStack.Screen name={Routes.Home} component={BookHome} options={{ title: 'Home' }} />
-    </BookListStack.Navigator>
+    <StackNavigator.Navigator headerMode="none">
+      <StackNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'Library' }} />
+      <StackNavigator.Screen name={Routes.Home} component={BookHome} options={{ title: 'Home' }} />
+    </StackNavigator.Navigator>
   );
 };
 
-const DummyStack = createStackNavigator();
-const DammyStackScreen = () => {
+const TabNavigatorScreen = () => {
   return (
-    <DummyStack.Navigator initialRouteName={Routes.Dummy} screenOptions={customHeaderNavigator}>
-      <DummyStack.Screen name={Routes.Dummy} component={Dummy} options={{ title: 'Dummy' }} />
-    </DummyStack.Navigator>
+    <TabNavigator.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
+          return <CustomIconTabBar route={route.name} focused={focused} />;
+        }
+      })}
+      tabBarOptions={{
+        activeTintColor: cerulean,
+        inactiveTintColor: dustyGray,
+        labelStyle: {
+          fontSize: 13
+        }
+      }}>
+      <TabNavigator.Screen name={'Library'} component={LibraryStackScreen} />
+      <TabNavigator.Screen name={Routes.Dummy} component={Dummy} />
+    </TabNavigator.Navigator>
   );
 };
 
-const AppTab = createBottomTabNavigator();
+const AppStack = () => (
+  <>
+    <StackNavigator.Screen name={'Library'} component={TabNavigatorScreen} />
+    <StackNavigator.Screen name={Routes.Dummy} component={Dummy} />
+  </>
+);
+
 const App = () => {
   return (
     <NavigationContainer>
-      <AppTab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => {
-            return <CustomIconTabBar route={route.name} focused={focused} />;
-          }
-        })}
-        tabBarOptions={{
-          activeTintColor: cerulean,
-          inactiveTintColor: dustyGray,
-          labelStyle: {
-            fontSize: 13
-          }
-        }}>
-        <AppTab.Screen
-          name={Routes.BookList}
-          component={BookListStackScreen}
-          options={{ title: 'Library' }}
-        />
-        <AppTab.Screen name={Routes.Dummy} component={DammyStackScreen} />
-      </AppTab.Navigator>
+      <StackNavigator.Navigator screenOptions={customHeaderNavigator}>{AppStack()}</StackNavigator.Navigator>
     </NavigationContainer>
   );
 };
