@@ -15,11 +15,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { cerulean, dustyGray, white } from '@constants/colors';
+import { Provider } from 'react-redux';
 import Routes from '@constants/routes';
 import bcNavBar from '@assets/bcNavBar.png';
 import BookList from '@screens/bookList';
 import BookHome from '@screens/bookHome';
 import Dummy from '@screens/dummy';
+import store from '@redux/store';
 
 import styles from './styles';
 import CustomIconTabBar from './components/customTabBarIcon';
@@ -76,9 +78,13 @@ const AppStack = () => (
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <StackNavigator.Navigator screenOptions={customHeaderNavigator}>{AppStack()}</StackNavigator.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StackNavigator.Navigator screenOptions={customHeaderNavigator}>
+          {AppStack()}
+        </StackNavigator.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

@@ -3,8 +3,15 @@ import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
 import { BOOKS_MOCK } from '@constants/mockBooks';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
+import { connect } from 'react-redux';
 
 import styles from './styles';
+
+const mapStateToProps = (state: any) => {
+  return {
+    book: state.book
+  };
+};
 
 function BookList() {
   const keyExtractor = ({ id }: IBook) => `${id}`;
@@ -29,4 +36,5 @@ function BookList() {
   );
 }
 
-export default BookList;
+export default connect(mapStateToProps)(BookList);
+// export default BookList;
