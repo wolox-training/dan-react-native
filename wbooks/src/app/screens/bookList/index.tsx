@@ -4,12 +4,12 @@ import { BOOKS_MOCK } from '@constants/mockBooks';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
 import { connect } from 'react-redux';
-import { ReduxInterface } from '@interfaces/reduxInterface';
+import { AppState } from '@interfaces/appStateInterface';
 
 import styles from './styles';
 
-const mapStateToProps = (state: ReduxInterface) => ({
-  book: state.book
+const mapStateToProps = (state: AppState) => ({
+  library: state.library.books
 });
 
 function BookList() {
