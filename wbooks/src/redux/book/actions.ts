@@ -6,16 +6,12 @@ export enum TypeBook {
   LIST = 'List'
 }
 
-export const bookAdd = (book: Book) => {
-  return {
-    type: TypeBook.ADD,
-    payload: book
-  };
-};
+export const bookAdd = (book: Book) => ({
+  type: TypeBook.ADD,
+  payload: book
+});
 
-export const bookList = (list: Book[]) => {
-  return {
-    type: TypeBook.LIST,
-    payload: list
-  };
-};
+export const bookList = (list: Book[]) => ({
+  type: TypeBook.LIST,
+  payload: list
+});

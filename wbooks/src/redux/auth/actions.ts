@@ -7,9 +7,7 @@ interface login {
   password: string;
 }
 
-export const loginAuth = ({ user, password }: login) => {
-  return {
-    type: TypeAuth.LOGIN,
-    payload: { user, password }
-  };
-};
+export const loginAuth = ({ user, password }: login) => ({
+  type: TypeAuth.LOGIN,
+  payload: { user, password }
+});

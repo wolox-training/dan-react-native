@@ -4,14 +4,13 @@ import { BOOKS_MOCK } from '@constants/mockBooks';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
 import { connect } from 'react-redux';
+import { ReduxInterface } from '@interfaces/reduxInterface';
 
 import styles from './styles';
 
-const mapStateToProps = (state: any) => {
-  return {
-    book: state.book
-  };
-};
+const mapStateToProps = (state: ReduxInterface) => ({
+  book: state.book
+});
 
 function BookList() {
   const keyExtractor = ({ id }: IBook) => `${id}`;

@@ -2,9 +2,9 @@ import { Action } from '@interfaces/action';
 
 import { TypeAuth } from './actions';
 
-const initialState = () => {
-  return { login: false };
-};
+const initialState = () => ({
+  login: false
+});
 
 function reducer(state = initialState, { type, payload }: Action<TypeAuth, any>) {
   switch (type) {
