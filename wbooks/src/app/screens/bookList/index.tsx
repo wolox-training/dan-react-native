@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
 import { bookList as ActionBookList, bookAdd as ActionBookAdd } from '@redux/book/actions';
@@ -13,12 +14,17 @@ const mapStateToProps = (state: AppState) => ({
   library: state.library
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   bookList: (books: IBook[]) => dispatch(ActionBookList(books)),
   bookAdd: (book: IBook) => dispatch(ActionBookAdd(book))
 });
 
-function BookList({ library, bookList }: any) {
+interface Props {
+  library: any;
+  bookList: Function;
+}
+
+function BookList({ library, bookList }: Props) {
   bookList(BOOKS_MOCK);
 
   const keyExtractor = ({ id }: IBook) => `${id}`;
