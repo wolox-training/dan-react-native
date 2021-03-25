@@ -1,18 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
-import { BOOKS_MOCK } from '@constants/mockBooks';
+import { bookList as ActionBookList, bookAdd as ActionBookAdd } from '@redux/book/actions';
 import Book from '@components/book';
 import { Book as IBook } from '@interfaces/bookInterface';
-import { connect } from 'react-redux';
+import { BOOKS_MOCK } from '@constants/mockBooks';
 import { AppState } from '@interfaces/appStateInterface';
 
 import styles from './styles';
 
 const mapStateToProps = (state: AppState) => ({
-  library: state.library.books
+  library: state.library
 });
 
-function BookList() {
+const mapDispatchToProps = (dispatch: any) => ({
+  bookList: (books: IBook[]) => dispatch(ActionBookList(books)),
+  bookAdd: (book: IBook) => dispatch(ActionBookAdd(book))
+});
+
+function BookList({ library, bookList }: any) {
+  bookList(BOOKS_MOCK);
+
   const keyExtractor = ({ id }: IBook) => `${id}`;
 
   const renderItem: ListRenderItem<IBook> = ({ item }) => {
@@ -25,7 +33,7 @@ function BookList() {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={BOOKS_MOCK}
+        data={library}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={itemSeparator}
@@ -35,5 +43,4 @@ function BookList() {
   );
 }
 
-export default connect(mapStateToProps)(BookList);
-// export default BookList;
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);

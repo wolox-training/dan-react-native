@@ -1,22 +1,22 @@
 import { Action } from '@interfaces/action';
-import { BOOKS_MOCK } from '@constants/mockBooks';
 
 import { TypeBook } from './actions';
 
 const initialState = () => {
-  return [...BOOKS_MOCK];
+  return [];
 };
 
 function reducer(state = initialState(), { type, payload }: Action<TypeBook, any>) {
   switch (type) {
     case TypeBook.ADD: {
-      return [...state, payload];
+      return [payload].concat(state);
     }
     case TypeBook.LIST: {
-      return [...BOOKS_MOCK];
+      return payload;
     }
-    default:
+    default: {
       return state;
+    }
   }
 }
 
