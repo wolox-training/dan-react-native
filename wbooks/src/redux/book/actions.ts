@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import { BOOKS_MOCK } from '@constants/mockBooks';
+// import BookService from '@services/bookService';
 
 export const actions = {
   GET_BOOKS: '@@BOOKS/GET_BOOKS',
@@ -11,6 +12,8 @@ export const actionCreators = {
   getBooks: () => (dispatch: Dispatch) => {
     dispatch({ type: actions.GET_BOOKS });
     const response = { ok: true, data: BOOKS_MOCK, problem: '' };
+    // const resp = await BookService.getBooks();
+    // console.log('resp', resp);
     if (response.ok) {
       dispatch({ type: actions.GET_BOOKS_SUCCESS, payload: response.data });
     } else {
