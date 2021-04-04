@@ -1,32 +1,31 @@
-import React from 'react';
-import { Dispatch } from 'redux';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
-import actionCreators, { bookAdd as ActionBookAdd } from '@redux/book/actions';
-import Book from '@components/book';
+import actionCreators from '@redux/book/actions';
 import { Book as IBook } from '@interfaces/bookInterface';
 import { AppState } from '@interfaces/appStateInterface';
+import Book from '@components/book';
 
 import styles from './styles';
 
 const mapStateToProps = (state: AppState) => ({
-  library: state.library
+  books: state.library.books
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  bookList: () => actionCreators.getBooks(),
-  // bookList: (books: IBook[]) => dispatch(ActionBookList(books)),
-  bookAdd: (book: IBook) => dispatch(ActionBookAdd(book))
+// dispatch: Dispatch<any>
+const mapDispatchToProps = (dispatch: any) => ({
+  getBookList: () => dispatch(actionCreators.getBooks())
 });
 
 interface Props {
-  library: any;
-  bookList: any;
+  books: IBook[];
+  getBookList: any;
 }
 
-function BookList({ library, bookList }: Props) {
-  bookList();
-  actionCreators.getBooks();
+function BookList({ books, getBookList }: Props) {
+  useEffect(() => {
+    getBookList();
+  }, [getBookList]);
 
   const keyExtractor = ({ id }: IBook) => `${id}`;
 
@@ -40,7 +39,7 @@ function BookList({ library, bookList }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={library}
+        data={books}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={itemSeparator}

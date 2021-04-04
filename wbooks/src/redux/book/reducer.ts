@@ -1,24 +1,23 @@
-import { Action } from '@interfaces/action';
+import { actions } from './actions';
 
-import { TypeBook, actions } from './actions';
-
-const initialState = () => {
-  return [];
+const initialState = {
+  books: [],
+  booksLoading: false,
+  booksError: null
 };
 
-function reducer(state = initialState(), { type, payload }: Action<any, any>) {
+function reducer(state = initialState, action: any) {
+  const { type, payload } = action;
+
   switch (type) {
-    case TypeBook.ADD: {
-      return [payload].concat(state);
-    }
-    case TypeBook.STARTLIST: {
-      return state;
-    }
-    case TypeBook.LIST: {
-      return payload;
-    }
     case actions.GET_BOOKS: {
-      return state;
+      return { ...state, booksLoading: true };
+    }
+    case actions.GET_BOOKS_SUCCESS: {
+      return { ...state, books: payload, booksLoading: false };
+    }
+    case actions.GET_BOOKS_FAILURE: {
+      return { ...state, booksLoading: false, booksError: payload };
     }
     default: {
       return state;
