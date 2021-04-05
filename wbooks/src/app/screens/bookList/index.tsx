@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { AnyAction, Dispatch } from 'redux';
 import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
 import actionCreators from '@redux/book/actions';
 import { Book as IBook } from '@interfaces/bookInterface';
@@ -12,14 +13,13 @@ const mapStateToProps = (state: AppState) => ({
   books: state.library.books
 });
 
-// dispatch: Dispatch<any>
-const mapDispatchToProps = (dispatch: any) => ({
-  getBookList: () => dispatch(actionCreators.getBooks())
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
+  getBookList: () => dispatch(actionCreators.getBooks() as any)
 });
 
 interface Props {
   books: IBook[];
-  getBookList: any;
+  getBookList: () => void;
 }
 
 function BookList({ books, getBookList }: Props) {
