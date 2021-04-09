@@ -10,7 +10,7 @@ import Book from '@components/book';
 import styles from './styles';
 
 const mapStateToProps = (state: AppState) => ({
-  books: state.library.books
+  books: state.book.books
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({

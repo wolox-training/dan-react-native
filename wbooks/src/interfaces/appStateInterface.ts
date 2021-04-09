@@ -1,13 +1,15 @@
 import { Book } from './bookInterface';
 
-interface LibraryState {
+interface BookState {
   books: Book[];
+  booksLoading: boolean;
+  booksError: string | null;
 }
 
 interface AuthState {
   logged: boolean;
 }
 export interface AppState {
-  library: LibraryState;
+  book: BookState;
   auth: AuthState;
 }

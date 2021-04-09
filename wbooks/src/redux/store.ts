@@ -1,11 +1,16 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { fetchMiddleware } from 'redux-recompose';
 import thunk from 'redux-thunk';
 import auth from '@redux/auth/reducer';
 import book from '@redux/book/reducer';
 
-// state main with 2 state
-const reducer = combineReducers({ auth, library: book });
+// Add reducers here
+const reducers = combineReducers({
+  auth,
+  book
+});
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const enhancer = [applyMiddleware(thunk, fetchMiddleware)];
+const store = createStore(reducers, compose(...enhancer));
 
 export default store;
